@@ -1,0 +1,178 @@
+/* MonoVista Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-deep: #080c14;
+  --bg-card: #0e1420;
+  --bg-raised: #141c2e;
+  --border: #1e2d4a;
+  --accent: #00d4ff;
+  --accent2: #7b5ea7;
+  --accent3: #ff6b6b;
+  --text-pri: #e8f0fe;
+  --text-sec: #8899bb;
+  --text-dim: #445577;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow: 0 4px 32px rgba(0, 0, 0, 0.6);
+  --glow: 0 0 24px rgba(0, 212, 255, 0.18);
+  --nav-bg: rgba(8,12,20,0.85);
+  --three-bg: #080c14;
+}
+
+/* ── 浅色模式 ── */
+html.light-mode {
+  --bg-deep:   #f0f4fc;
+  --bg-card:   #ffffff;
+  --bg-raised: #e4eaf6;
+  --border:    #c8d6ee;
+  --accent:    #0099cc;
+  --accent2:   #7b5ea7;
+  --accent3:   #e05252;
+  --text-pri:  #0d1a2e;
+  --text-sec:  #4a5a78;
+  --text-dim:  #8899bb;
+  --shadow:    0 4px 32px rgba(0,0,0,0.12);
+  --glow:      0 0 24px rgba(0,153,204,0.22);
+  --nav-bg:    rgba(240,244,252,0.88);
+  --three-bg:  #e4eaf6;
+}
+
+/* ── 全局颜色过渡（主题切换平滑） ── */
+html *:not(canvas):not(.loader) {
+  transition:
+    background-color 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+html,
+body {
+  background: var(--bg-deep);
+  color: var(--text-pri);
+  font-family: 'Syne', sans-serif;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: var(--radius);
+  border: none;
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+}
+
+.btn-primary:hover {
+  box-shadow: var(--glow);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-sec);
+  border: 1px solid var(--border);
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(0, 212, 255, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.loader {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.5s ease forwards;
+}
