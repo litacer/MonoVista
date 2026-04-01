@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: monovista-backend
+    restart: always
+    env_file:
+      - .env.production
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./static:/app/static
+      - ./models_cache:/app/models_cache
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: monovista-frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
