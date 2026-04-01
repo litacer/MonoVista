@@ -48,8 +48,8 @@ def _get_redis():
     if redis_lib is None:
         raise RuntimeError("redis-py not installed. Run: pip install redis")
     _redis_client = redis_lib.Redis(
-        host     = os.getenv("REDIS_HOST", "120.24.30.144"),
-        port     = int(os.getenv("REDIS_PORT", 16379)),
+        host     = os.getenv("REDIS_HOST", "redis"),
+        port     = int(os.getenv("REDIS_PORT", 6379)),
         db       = int(os.getenv("REDIS_DB", 1)),
         #password = os.getenv("REDIS_PWD", 123456) or None,
         decode_responses = True,   # 返回 str 而非 bytes
