@@ -72,8 +72,8 @@ def create_app() -> Flask:
 
     db_user = os.getenv("MYSQL_USER", "root")
     db_pass = os.getenv("MYSQL_PASSWORD", "123456")
-    db_host = os.getenv("MYSQL_HOST", "127.0.0.1")
-    db_port = os.getenv("MYSQL_PORT", "3306")
+    db_host = os.getenv("MYSQL_HOST", "120.24.30.144")
+    db_port = os.getenv("MYSQL_PORT", "13306")
     db_name = os.getenv("MYSQL_DB", "monovista")
     app.config["SQLALCHEMY_DATABASE_URI"] = (
         f"mysql+pymysql://{db_user}:{db_pass}@{db_host}:{db_port}/{db_name}?charset=utf8mb4"
@@ -111,6 +111,7 @@ if __name__ == "__main__":
 
     app.run(
         host="0.0.0.0",
+        #host="127.0.0.1",
         port=int(os.getenv("PORT", 5000)),
         debug=os.getenv("FLASK_DEBUG", "false").lower() == "true",
     )

@@ -1,6 +1,26 @@
 version: "3.9"
 
 services:
+# 数据库服务
+  mysql-db:
+    image: mysql:8.0.32
+    container_name: mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=monovista
+    ports:
+      - "13306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+
+  # Redis 服务
+  redis:
+    image: redis:6.2
+    container_name: redis
+    restart: always
+    ports:
+      - "16379:6379"
   backend:
     build:
       context: .
